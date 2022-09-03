@@ -7,8 +7,8 @@ function App() {
   const [chats, setChat] = useState([]);
   const [msg, setMsg] = useState("");
 
-  const db = getDatabase();
-  const chatListRef = ref(db, "chats");
+  const database = getDatabase();
+  const chatListRef = ref(database, "chats");
   const updateHeight = () => {
     const el = document.getElementById("chat");
     if (el) {
@@ -25,7 +25,7 @@ function App() {
     });
   }, [0]);
 
-  const senChat = () => {
+  const sendChat = () => {
     const chatRef = push(chatListRef);
     set(chatRef, {
       name,
@@ -84,7 +84,7 @@ function App() {
               value={msg}
               onInput={(e) => setMsg(e.target.value)}
             ></input>
-            <button onClick={(e) => senChat()}>Send</button>
+            <button onClick={(e) => sendChat()}>Send</button>
           </div>{" "}
         </div>
       ) : null}
